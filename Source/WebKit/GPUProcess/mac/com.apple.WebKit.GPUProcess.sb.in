@@ -24,11 +24,7 @@
 (version 1)
 (deny default (with partial-symbolication))
 (deny nvram*)
-(deny system-privilege)
 (allow system-audit file-read-metadata)
-
-;; Silence spurious logging due to rdar://20117923 and rdar://72366475
-(deny system-privilege (privilege-id PRIV_GLOBAL_PROC_INFO) (with no-report))
 
 #include "Shared/Sandbox/preferences.sb"
 
@@ -691,9 +687,7 @@
 (allow mach-lookup
        (global-name "com.apple.audio.audiohald")
        (global-name "com.apple.CARenderServer") ; Needed for [CAContext remoteContextWithOptions]
-#if __MAC_OS_X_VERSION_MIN_REQUIRED < 120000
        (global-name "com.apple.lsd.mapdb")
-#endif
        (global-name "com.apple.fonts")
        (global-name "com.apple.PowerManagement.control")
        (global-name "com.apple.trustd.agent")
