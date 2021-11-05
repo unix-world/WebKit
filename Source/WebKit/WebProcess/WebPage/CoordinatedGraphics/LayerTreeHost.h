@@ -37,8 +37,10 @@
 #include <wtf/Forward.h>
 #include <wtf/OptionSet.h>
 #include <wtf/RunLoop.h>
+#if USE(COORDINATED_GRAPHICS)
 #if PLATFORM(GTK)
 #include <WebCore/CoordinatedGraphicsLayer.h>
+#endif
 #endif
 
 #if USE(GRAPHICS_LAYER_TEXTURE_MAPPER)
